@@ -1,0 +1,14 @@
+
+public class binSearch {
+    public static void main(String[] args) {
+        
+    }
+    static int binS(int [] a, int r, int l,int key){
+        if (r - l < 0) return -1;
+        int m = (l+r)/2;
+        if (a[m]== key) return m;
+        if (a[m] > key) return binS(a,l,m-1,key);
+        else return binS(a,m+1,r,key);
+    }
+}
+ 
