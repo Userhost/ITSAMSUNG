@@ -1,0 +1,17 @@
+import java.util.Scanner;
+public class Ap {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int m = in.nextInt();
+        System.out.println(nok(n,m)/m);
+    }
+
+    static long nok(long f, long s) {
+        return f*s/gcd(f,s);
+    }
+        static long gcd(long i, long j){
+            return  j == 0 ? i : gcd(j,i % j);
+        }
+
+    }
