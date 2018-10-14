@@ -13,5 +13,4 @@ public class Ap {
         static long gcd(long i, long j){
             return  j == 0 ? i : gcd(j,i % j);
         }
-
-    }
+}
