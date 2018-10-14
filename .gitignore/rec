@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+/**
+ * Created by schooler on 14.10.18.
+ */
+public class f {
+    static int c = 0;
+    public static void main(String[] args) {
+        long [] fibs = new long[101];
+        fibs[1] = 1;
+        fibs[2] = 1;
+        fibs[0] = 0;
+        System.out.println(gcd(25234452, 24234));
+        System.out.println(c);
+        show();
+    }
+    static  long factor(int n){
+        c++;
+        return n == 1 ? 1 : n * factor(n-1);
+    }
+    static  long fib(int n, long [] f){
+
+        c++;
+        if (f[n] > 0 ) return f[n];
+        f[n] = fib(n-1, f) + fib(n-2, f);
+        return f[n];
+    }
+    static long gcd(long i, long j){
+        c++;
+        return  j == 0 ? i : gcd(j,i % j);
+    }
+        static void show (){
+            int n = new Scanner(System.in).nextInt();
+            if (n == 0) return;
+            show();
+            System.out.print(n + " ");
+        }
+    }
