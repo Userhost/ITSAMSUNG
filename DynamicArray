@@ -1,0 +1,79 @@
+package OOP;
+
+import java.util.Arrays;
+
+public class DynamicArray {
+    private int size,capacity;
+    private int[] data;
+    private int min, max, sum;
+
+    public DynamicArray(){
+        size = 0;
+        capacity = 1000;
+        data = new int[capacity];
+    }
+    public DynamicArray(int size){
+        this.size = size;
+        capacity = size > 1000 ? size + 1 : 1000;
+        data = new int[capacity];
+    }
+    public DynamicArray(int size,int val){
+        this.size = size;
+        capacity = size > 1000 ? size +1 : 1000;
+        data = new int[capacity];
+        for (int i = 0; i < size ; i++) {
+            data[i]= val;
+        }
+    }
+    public void add(int value){
+        if (size < capacity) {
+            data[size] = value;
+            size++;
+        }
+        else {
+            capacity *= 2;
+            int [] now = new int[capacity];
+            if (size >= 0) System.arraycopy(data,0,now,0,size);
+                data = now;
+                data[size] = value;
+                size++;
+            }
+        }
+    public void add(int index,int value){
+        if (size < capacity){
+            for (int i = size-1; i >= index ; i--) {
+                data[i]=data[i-1];
+            }
+            data[index] = value;
+            size++;
+        }
+    }
+    public void remove(int index){
+        for (int i = index; i <size ; i++) {
+            if (i == size-1){
+                data[i] = 0;
+            }
+            else {
+                data[i] = data[i + 1];
+            }
+        }
+    }
+    public void removeNum(int num){
+        for (int j = 0; j < size ; j++) {
+            if (data[j] == num){
+                for (int i = j; i <size ; i++) {
+                    if (i == size-1){
+                        data[i] = 0;
+                    }
+                    else {
+                        data[i] = data[i + 1];
+                    }
+                }
+            }
+        }
+    }
+    public String toString() {
+        return Arrays.toString(data);
+    }
+
+}
